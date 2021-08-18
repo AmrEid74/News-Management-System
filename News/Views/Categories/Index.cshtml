@@ -1,0 +1,42 @@
+﻿
+
+@model IEnumerable<News.BL.Models.CategoriesVM>
+
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<link href="~/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+<style>
+    th {
+        text-align: center !important;
+    }
+</style>
+<h2>Welcome To Department</h2>
+<table class="table table-bordered table-striped table-hover text-center font-weight-bold">
+    <tr class="thead-dark">
+        <th>Id</th>
+        <th>Category Name</th>
+        <th>Category Description</th>
+        <th>Update</th>
+        <th>Remove</th>
+        <th>Details</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.CategoryName</td>
+            <td>@item.Description</td>
+            <td><a asp-action="Edit" asp-controller="Department" asp-route-id="@item.Id" class="btn btn-success">Update</a></td>
+            <td><a asp-action="Delete" asp-controller="Department" asp-route-id="@item.Id" class="btn btn-danger">Remove</a></td>
+            <td><a asp-action="Details" asp-controller="Department" asp-route-id="@item.Id" class="btn btn-info">Details</a></td>
+        </tr>
+    }
+</table>
+
+
+
+
+

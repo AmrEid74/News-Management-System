@@ -1,0 +1,47 @@
+﻿@model News.BL.Models.CategoriesVM
+
+
+@{
+
+    ViewBag.Title = "Create";}
+<h2>Create</h2>
+
+
+
+<br />
+
+<a asp-action="Index" asp-controller="Categories" class="btn btn-primary">Back To Departments</a>
+
+<br />
+<br />
+
+
+<form asp-action="Create" asp-controller="Categories" class="form-group">
+
+    <br />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <br />
+
+    <label asp-for="CategoryName">Category Name</label>
+    <input type="text" class="form-control" asp-for="CategoryName" />
+    <span asp-validation-for="CategoryName" class="text-danger"></span>
+    <br />
+
+    <label asp-for="Description"> Description</label>
+    <input type="text" class="form-control" asp-for="Description" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+
+    <br />
+
+    <center>
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <input type="reset" value="Cancle" class="btn btn-danger" />
+    </center>
+
+</form>
+
+
+@section ClientValidation{
+    <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -73,27 +73,54 @@ namespace News.Controllers
             return View(data);
         }
 
-        //[HttpPost]
-        //public IActionResult Edit(CategoriesVM model)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
+        [HttpPost]
+        public IActionResult Edit(CategoriesVM model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
 
-        //            var data = mapper.Map<Categories>(model);
-        //            categories.Update(data);
-        //            return RedirectToAction("Index");
-        //        }   
+                    var data = mapper.Map<Categories>(model);
+                    categories.Update(data);
+                    return RedirectToAction("Index");
+                }
 
-        //        return View(model);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return View(model);
-        //    }
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                return View(model);
+            }
 
-        //}
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var data = mapper.Map<CategoriesVM>(categories.GetById(id));
+            return View(data);
+        }
+
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult ConfirmDelete(int id)
+        {
+
+            try
+            {
+                var oldData = categories.GetById(id);
+                categories.Delete(oldData);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+
+                var data = mapper.Map<CategoriesVM>(categories.GetById(id));
+                return View(data);
+            }
+
+        }
 
     }
 }

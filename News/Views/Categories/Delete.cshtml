@@ -1,0 +1,37 @@
+﻿@model News.BL.Models.CategoriesVM
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Create</h2>
+
+
+
+<br />
+
+<a asp-action="Index" asp-controller="Categories" class="btn btn-primary">Back To Categories</a>
+
+<br />
+<br />
+
+
+<form asp-action="Delete" asp-controller="Categories" class="form-group">
+
+
+    <input type="hidden" asp-for="Id" />
+
+    <label asp-for="CategoryName">Categories Name</label>
+    <input type="text" class="form-control" asp-for="CategoryName" disabled />
+    <br />
+
+    <label asp-for="Description">Description</label>
+    <input type="text" class="form-control" asp-for="Description" disabled />
+
+    <br />
+
+    <center>
+        <input type="submit" value="Delete" class="btn btn-primary" />
+    </center>
+
+</form>

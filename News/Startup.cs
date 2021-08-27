@@ -31,6 +31,9 @@ namespace News
             services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
             services.AddScoped<ICategoriesRep, CategoriesRep>();
             services.AddScoped<INewssRep, NewssRep>();
+            services.AddScoped<IAdminRep, AdminRep>();
+            services.AddScoped<IEditorRep, EditorRep>();
+
 
 
             services.AddDbContextPool<DemoContext>(opts =>

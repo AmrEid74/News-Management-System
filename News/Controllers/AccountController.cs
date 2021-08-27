@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using News.BL.Models;
@@ -9,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace News.Controllers
 {
-    public class Account : Controller
+    public class AccountController : Controller
 
 
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManger;
 
-        public Account(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManger)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManger)
         {
             this.userManager = userManager;
             this.signInManger = signInManger;
@@ -112,9 +113,10 @@ namespace News.Controllers
 
         #region Sign Out
         [HttpPost]
-        public IActionResult LogOff()
+        public async Task<IActionResult> LogOff()
         {
-            return View();
+            await signInManger.SignOutAsync();
+            return RedirectToAction("Login");
         }
 
         #endregion

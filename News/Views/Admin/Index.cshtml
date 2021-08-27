@@ -1,0 +1,53 @@
+﻿
+@model IEnumerable<News.BL.Models.AdminVM>
+
+
+    @{
+        ViewBag.Title = "Admin";
+    }
+
+    <link href="~/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <style>
+        th {
+            text-align: center !important;
+        }
+    </style>
+
+    <br />
+    <h1>Admins</h1>
+    <br />
+
+    <a asp-action="Create" asp-controller="Admin" class="btn btn-primary">Add New Admin </a>
+    <br />
+    <br />
+    <table class="table table-bordered table-striped table-hover text-center font-weight-bold">
+        <tr class="thead-dark">
+            <th>Id</th>
+            <th>Name</th>
+            <th>E.Mail</th>
+            <th>Age</th>
+            <th>Salary</th>
+
+            <th>Update</th>
+            <th>Remove</th>
+            <th>Details</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>@item.Id</td>
+        <td>@item.Name</td>
+        <td>@item.Email</td>
+        <td>@item.Age</td>
+        <td>@item.Salary</td>
+        <td><a asp-action="Edit" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-success">Update</a></td>
+        <td><a asp-action="Delete" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-danger">Remove</a></td>
+        <td><a asp-action="Details" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-info">Details</a></td>
+    </tr>
+        }
+    </table>
+
+
+
+
+

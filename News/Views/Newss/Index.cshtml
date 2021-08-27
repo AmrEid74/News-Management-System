@@ -13,7 +13,12 @@
         text-align: center !important;
     }
 </style>
-<h2>Welcome To Department</h2>
+<h2>News</h2>
+
+
+<a asp-action="Create" asp-controller="Newss" class="btn btn-primary">Add News </a>
+<br />  
+<br />  
 <table class="table table-bordered table-striped table-hover text-center font-weight-bold">
     <tr class="thead-dark">
         <th>Id</th>
@@ -26,17 +31,17 @@
     </tr>
     @foreach (var item in Model)
     {
-<tr>
-    <td>@item.Id</td>
-    <td>@item.Title</td>
-    <td>@item.Content</td>
-    <td>@item.Categories.CategoryName</td>
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Title</td>
+            <td>@item.Content</td>
+            <td>@item.Categories.CategoryName</td>
 
 
-    <td><a asp-action="Edit" asp-controller="Department" asp-route-id="@item.Id" class="btn btn-success">Update</a></td>
-    <td><a asp-action="Delete" asp-controller="Department" asp-route-id="@item.Id" class="btn btn-danger">Remove</a></td>
-    <td><a asp-action="Details" asp-controller="Department" asp-route-id="@item.Id" class="btn btn-info">Details</a></td>
-</tr>
+            <td><a asp-action="Edit" asp-controller="Newss" asp-route-id="@item.Id" class="btn btn-success">Update</a></td>
+            <td><a asp-action="Delete" asp-controller="Newss" asp-route-id="@item.Id" class="btn btn-danger">Remove</a></td>
+            <td><a asp-action="Details" asp-controller="Newss" asp-route-id="@item.Id" class="btn btn-info">Details</a></td>
+        </tr>
     }
 </table>
 

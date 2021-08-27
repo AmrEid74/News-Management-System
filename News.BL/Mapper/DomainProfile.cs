@@ -20,6 +20,13 @@ namespace News.BL.Mapper
             CreateMap<NewssVM, Newss>();
 
 
+            CreateMap<Admin, AdminVM>();
+            CreateMap<AdminVM, Admin>();
+
+
+            CreateMap<Editor, EditorVM>();
+            CreateMap<EditorVM, Editor>();
+
         }
     }
 }

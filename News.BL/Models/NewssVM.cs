@@ -28,10 +28,10 @@ namespace News.BL.Models
         public string Images { get; set; }
 
         [Required(ErrorMessage = "Department Required")]
-        public int CategoryntId { get; set; }
+        public int CategoryId { get; set; }
 
 
-        [ForeignKey("CategoryntId")]
+        [ForeignKey("CategoryId")]
         public Categories Categories { get; set; }
     
         [ForeignKey("EditorId")]

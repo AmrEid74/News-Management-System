@@ -13,7 +13,14 @@
         text-align: center !important;
     }
 </style>
-<h2>Welcome To Department</h2>
+
+<br />
+<h1>Categories</h1>
+<br />
+
+<a asp-action="Create" asp-controller="Categories" class="btn btn-primary"> Create New Category </a>
+<br />  
+<br />  
 <table class="table table-bordered table-striped table-hover text-center font-weight-bold">
     <tr class="thead-dark">
         <th>Id</th>
@@ -29,9 +36,9 @@
             <td>@item.Id</td>
             <td>@item.CategoryName</td>
             <td>@item.Description</td>
-            <td><a asp-action="Edit" asp-controller="Department" asp-route-id="@item.Id" class="btn btn-success">Update</a></td>
-            <td><a asp-action="Delete" asp-controller="Department" asp-route-id="@item.Id" class="btn btn-danger">Remove</a></td>
-            <td><a asp-action="Details" asp-controller="Department" asp-route-id="@item.Id" class="btn btn-info">Details</a></td>
+            <td><a asp-action="Edit" asp-controller="Categories" asp-route-id="@item.Id" class="btn btn-success">Update</a></td>
+            <td><a asp-action="Delete" asp-controller="Categories" asp-route-id="@item.Id" class="btn btn-danger">Remove</a></td>
+            <td><a asp-action="Details" asp-controller="Categories" asp-route-id="@item.Id" class="btn btn-info">Details</a></td>
         </tr>
     }
 </table>

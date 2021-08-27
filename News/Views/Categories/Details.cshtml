@@ -1,0 +1,33 @@
+﻿@model News.BL.Models.CategoriesVM
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Create</h2>
+
+
+
+<br />
+
+<a asp-action="Index" asp-controller="Categories" class="btn btn-primary">Back To Categories</a>
+<a asp-action="Edit" asp-controller="Categories" asp-route-id="@Model.Id" class="btn btn-success">Edit</a>
+
+<br />
+<br />
+
+
+<form class="form-group">
+
+    <label asp-for="Id">Id</label>
+    <input type="text" asp-for="Id" disabled />
+
+    <label asp-for="CategoryName">Category Name</label>
+    <input type="text" class="form-control" asp-for="CategoryName" disabled />
+    <br />
+
+    <label asp-for="Description">Description</label>
+    <input type="text" class="form-control" asp-for="Description" disabled />
+
+</form>

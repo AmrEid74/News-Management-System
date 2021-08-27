@@ -1,0 +1,41 @@
+﻿@model News.BL.Models.NewssVM
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+
+
+<br />
+
+<a asp-action="Index" asp-controller="Newss" class="btn btn-primary">Back To News</a>
+<a asp-action="Edit" asp-controller="Newss" asp-route-id="@Model.Id" class="btn btn-success">Edit</a>
+
+<br />
+<br />
+
+
+<form class="form-group">
+
+    <label asp-for="Id">Id</label>
+    <input type="text" asp-for="Id" disabled />
+
+    <label asp-for="Title">Title</label>
+    <input type="text" class="form-control" asp-for="Title" disabled />
+    <br />
+
+    <label asp-for="Content">Content</label>
+    <input type="text" class="form-control" asp-for="Content" disabled />
+    <br />
+
+    
+
+    <label asp-for="CategoryId">Department</label>
+    <select asp-items="(SelectList)ViewBag.CategoriesList" disabled></select>
+    <br />
+
+
+</form>

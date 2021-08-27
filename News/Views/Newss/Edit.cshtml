@@ -1,0 +1,58 @@
+﻿@model News.BL.Models.NewssVM
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+
+<br />
+
+<a asp-action="Index" asp-controller="Newss" class="btn btn-primary">Back To News</a>
+
+<br />
+<br />
+
+
+<form asp-action="Edit" asp-controller="Newss" class="form-group">
+
+    <br />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <br />
+
+    <input type="hidden" asp-for="Id" />
+
+    <label asp-for="Title">Title</label>
+    <input type="text" class="form-control" asp-for="Title" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+
+    <label asp-for="Content">Content</label>
+    <input type="text" class="form-control" asp-for="Content" />
+    <span asp-validation-for="Content" class="text-danger"></span>
+
+    <br />
+    <label asp-for="CategoryId">Category</label>
+    <select asp-for="CategoryId" asp-items="(SelectList)ViewBag.CategoriesList">
+        <option>Choose Category</option>
+    </select>
+    <span asp-validation-for="CategoryId" class="text-daner"></span>
+    <br />
+
+    <br />
+
+    <center>
+        <input type="submit" value="Edit" class="btn btn-primary" />
+        <input type="reset" value="Cancle" class="btn btn-danger" />
+    </center>
+
+</form>
+
+
+@*@section ClientValidation{
+        <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+        <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    }*@

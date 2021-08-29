@@ -20,10 +20,9 @@ namespace News.BL.Models
         public string CategoryName { get; set; }
 
 
-        [StringLength(50)]
         [Required(ErrorMessage = "Description Required")]
-        [MaxLength(50, ErrorMessage = "Max len 50 Letter")]
-        [MinLength(3, ErrorMessage = "Min Len 10 Letter")]
+        [MaxLength(100, ErrorMessage = "Max len 100 Letter")]
+        [MinLength(10, ErrorMessage = "Min Len 10 Letter")]
         public string Description { get; set; }
 
         [ForeignKey("AdminId")]

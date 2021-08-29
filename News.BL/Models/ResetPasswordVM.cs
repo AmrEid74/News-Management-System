@@ -10,11 +10,11 @@ namespace News.BL.Models
   public  class ResetPasswordVM
     {
         [Required(ErrorMessage = "Please, Enter Password")]
-        [StringLength(8, ErrorMessage = "Min Len 8")]
+        [StringLength(20, ErrorMessage = "Min Len 8")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Please, Enter Full Name")]
-        [StringLength(8, ErrorMessage = "Min Len 8")]
+        [StringLength(20, ErrorMessage = "Min Len 8")]
         [Compare("Password", ErrorMessageResourceName = "Not Match")]
         public string ConfirmPassword { get; set; }
     }

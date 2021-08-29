@@ -159,7 +159,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
+                        <i class ="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -182,9 +182,7 @@
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
+                    
 
                    @if (signInManager.IsSignedIn(User))
                     {
@@ -211,61 +209,65 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-             
-                        <li class="nav-item">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
+
+
+
+                        <li class="nav-link">
+                            <a asp-action="Index" asp-controller="Admin" class="nav-link">
+                                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
                                 <p>
-                                    Employees
-                                    <i class="fas fa-angle-left right"></i>
+
+                                    Admins
+
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-link">
-                                    <a asp-action="Index" asp-controller="Admin" class="nav-link">
-                                            Admins
-                                    </a>
-                                </li>
-                                <li class="nav-link">
-                                    <a asp-action="Index" asp-controller="Editor" class="nav-link">
-                                            Editors
-                                    </a>
-                                </li>
-                            </ul>
-                            </li>
+                        </li>
+
+
+                        <li class="nav-link">
+                            <a asp-action="Index" asp-controller="Editor" class="nav-link">
+                                <i class="fa fa-file fa-2x" aria-hidden="true"></i>
+                                <p>
+
+                                    Editors
+
+                                </p>
+                            </a>
+                        </li>
 
 
 
-                                <li class="nav-link">
-                                    <a asp-action="Index" asp-controller="Categories" class="nav-link">
-                                        <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
-                                        <p>
 
-                                            Categories
 
-                                        </p>
-                                    </a>
-                                </li>
+                        <li class="nav-link">
+                            <a asp-action="Index" asp-controller="Categories" class="nav-link">
+                                <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
+                                <p>
 
-                                <li class="nav-link">
-                                    <a asp-action="Index" asp-controller="Newss" class="nav-link">
-                                        <i class="fa fa-newspaper fa-2x" aria-hidden="true"></i>
-                                        <p class="right-align">
+                                    Categories
 
-                                            News
+                                </p>
+                            </a>
+                        </li>
 
-                                        </p>
-                                    </a>
-                                </li>
+                        <li class="nav-link">
+                            <a asp-action="Index" asp-controller="Newss" class="nav-link">
+                                <i class="fa fa-newspaper fa-2x" aria-hidden="true"></i>
+                                <p class="right-align">
 
-                                <li>
-                                    <form asp-controller="Account" asp-action="LogOff">
-                                        <input type="submit" value="Sign Out" class="btn btn-primary" />
-                                    </form>
-                                </li>
-                        </ul>
-                    </nav>
+                                    News
+
+                                </p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <form asp-controller="Account" asp-action="LogOff">
+                                <input type="submit" value="Sign Out" class="btn btn-primary" />
+                            </form>
+                        </li>
+                    </ul>
+</nav>
 
                                 <!-- /.sidebar-menu -->
 </div>

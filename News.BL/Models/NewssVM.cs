@@ -14,18 +14,15 @@ namespace News.BL.Models
     {
         public int Id { get; set; }
 
-        [StringLength(50)]
         [Required(ErrorMessage = "Title Required")]
         [MaxLength(50, ErrorMessage = "Max len 50 Letter")]
         [MinLength(3, ErrorMessage = "Min Len 3 Letter")]
         public string Title { get; set; }
 
-        [StringLength(50)]
         [Required(ErrorMessage = "Content")]
-        [MaxLength(50, ErrorMessage = "Max len 50 Letter")]
-        [MinLength(3, ErrorMessage = "Min Len 10 Letter")]
+        [MaxLength(100, ErrorMessage = "Max len 100 Letter")]
+        [MinLength(10, ErrorMessage = "Min Len 10 Letter")]
         public string Content { get; set; }
-        //[Required(ErrorMessage = "Photo Required")]
 
         public string Photo { get; set; }
         public IFormFile PhotoUrl{ get; set; }

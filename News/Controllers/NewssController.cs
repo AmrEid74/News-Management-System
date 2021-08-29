@@ -90,8 +90,9 @@ namespace News.Controllers
             {
                 if (ModelState.IsValid)
                 {
-
+                    var PhotoName = FileUploader.UploadFile("/Files/Photos/", model.PhotoUrl);
                     var data = mapper.Map<Newss>(model);
+                    data.Photo = PhotoName;
                     news.Update(data);
                     return RedirectToAction("Index");
                 }

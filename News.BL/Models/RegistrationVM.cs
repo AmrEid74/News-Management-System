@@ -21,7 +21,7 @@ namespace News.BL.Models
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Enter Password")]
-        [StringLength(8, ErrorMessage = "Min Len 8")]
+        [StringLength(20, ErrorMessage = "Min Len 8")]
         [Compare("Password", ErrorMessage = "Not Match")]
         public string ConfirmPassword { get; set; }
 

@@ -41,7 +41,7 @@ namespace News.Controllers
 
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Newss");
                     }
                     else
                     {

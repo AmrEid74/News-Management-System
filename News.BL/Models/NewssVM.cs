@@ -25,6 +25,7 @@ namespace News.BL.Models
         public string Content { get; set; }
 
         public string Photo { get; set; }
+        
         public IFormFile PhotoUrl{ get; set; }
 
         [Required(ErrorMessage = "Department Required")]

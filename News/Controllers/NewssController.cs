@@ -8,6 +8,8 @@ using News.BL.Interfaces;
 using News.BL.Models;
 using News.DAL.Entity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.IO;
+using News.BL.Helper;
 
 namespace News.Controllers
 {
@@ -52,7 +54,9 @@ namespace News.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var PhotoName = FileUploader.UploadFile("/Files/Photos/", model.PhotoUrl);
                     var data = mapper.Map<Newss>(model);
+                    data.Photo = PhotoName;
                     news.Create(data);
                     return RedirectToAction("Index");
                 }
@@ -123,6 +127,7 @@ namespace News.Controllers
             {
                 var oldData = news.GetById(id);
                 news.Delete(oldData);
+                FileUploader.RemoveFile("/File/Photos/", oldData.Photo);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

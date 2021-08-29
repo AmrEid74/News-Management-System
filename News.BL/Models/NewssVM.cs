@@ -1,4 +1,5 @@
-﻿using News.DAL.Entity;
+﻿using Microsoft.AspNetCore.Http;
+using News.DAL.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,12 +21,14 @@ namespace News.BL.Models
         public string Title { get; set; }
 
         [StringLength(50)]
-        [Required(ErrorMessage = "Title Required")]
+        [Required(ErrorMessage = "Content")]
         [MaxLength(50, ErrorMessage = "Max len 50 Letter")]
         [MinLength(3, ErrorMessage = "Min Len 10 Letter")]
         public string Content { get; set; }
-        [Required(ErrorMessage = "Title Required")]
-        public string Images { get; set; }
+        //[Required(ErrorMessage = "Photo Required")]
+
+        public string Photo { get; set; }
+        public IFormFile PhotoUrl{ get; set; }
 
         [Required(ErrorMessage = "Department Required")]
         public int CategoryId { get; set; }

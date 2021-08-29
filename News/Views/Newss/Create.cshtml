@@ -2,10 +2,11 @@
 
 
 @{
+    ViewData["Title"] = "Create";
+}
 
-    ViewBag.Title = "Create";
-    }
 <h2>Create</h2>
+
 
 
 <br />
@@ -15,31 +16,45 @@
 <br />
 <br />
 
+<form enctype="multipart/form-data" class="form-group" asp-action="Create" asp-controller="Newss">
 
-<form asp-action="Create" asp-controller="Newss" class="form-group">
 
     <br />
     <div asp-validation-summary="All" class="text-danger"></div>
     <br />
 
-    <label asp-for="Title"> Title</label>
-    <input type="text" class="form-control" asp-for="Title" />
-    <span asp-validation-for="Title" class="text-danger"></span>
 
-    <label asp-for="Content"> Content</label>
+
+    <label asp-for="Title">Title</label>
+    <input type="text" class="form-control" asp-for="Title" />
+    <span asp-validation-for="Title" class="text-daner"></span>
+    <br />
+
+    <label asp-for="Content">Content</label>
     <input type="text" class="form-control" asp-for="Content" />
-    <span asp-validation-for="Content" class="text-danger"></span>
+    <span asp-validation-for="Content" class="text-daner"></span>
+    <br />
+
+   
+   
 
     <label asp-for="CategoryId">Category</label>
-    <select asp-items="(SelectList)ViewBag.CategoriesList">
-        <option>Choose category</option>
-
+    <select asp-for="CategoryId" asp-items="(SelectList)ViewBag.CategoriesList">
+        <option>Choose Department</option>
     </select>
-
+    <span asp-validation-for="CategoryId" class="text-daner"></span>
     <br />
 
 
+
+
+
+    <label asp-for="PhotoUrl"> Photo</label>
+    <input type="file" class="form-control" asp-for="PhotoUrl" />
+    <span asp-validation-for="PhotoUrl" class="text-daner"></span>
     <br />
+
+
 
     <center>
         <input type="submit" value="Save" class="btn btn-primary" />
@@ -50,6 +65,15 @@
 
 
 @*@section ClientValidation{
-        <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
-        <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    }*@
+    <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
+
+
+
+
+}
+
+
+
+
+

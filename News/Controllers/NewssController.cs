@@ -10,9 +10,12 @@ using News.DAL.Entity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.IO;
 using News.BL.Helper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace News.Controllers
 {
+    
+
     public class NewssController : Controller
     {
         private readonly IMapper mapper;
@@ -108,6 +111,7 @@ namespace News.Controllers
             }
 
         }
+       
 
         public IActionResult Delete(int id)
         {

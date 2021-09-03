@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using News.BL.Interfaces;
 using News.BL.Models;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace News.Controllers
 {
+    
+
     public class CategoriesController : Controller
     {
         private readonly ICategoriesRep categories;
@@ -34,6 +37,7 @@ namespace News.Controllers
             var data = mapper.Map<CategoriesVM>(categories.GetById(id));
             return View(data);
         }
+       
 
         [HttpGet]
         public IActionResult Create()
@@ -65,6 +69,7 @@ namespace News.Controllers
 
 
 
+       
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -94,6 +99,7 @@ namespace News.Controllers
             }
 
         }
+       
 
         public IActionResult Delete(int id)
         {

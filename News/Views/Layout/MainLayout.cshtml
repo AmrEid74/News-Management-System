@@ -256,11 +256,20 @@
                             </a>
                         </li>
 
-                        <li>
-                            <form asp-controller="Account" asp-action="LogOff">
-                                <input type="submit" value="Sign Out" class="btn btn-primary" />
-                            </form>
-                        </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li>
+                                <form asp-controller="Account" asp-action="LogOff">
+                                    <input type="submit" value="Sign Out" class="btn btn-primary" />
+                                </form>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li></li>
+                        }
+
                     </ul>
 </nav>
 

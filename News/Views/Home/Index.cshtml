@@ -1,8 +1,11 @@
-﻿@model IEnumerable<News.BL.Models.NewssVM>
+﻿
+@model IEnumerable<News.BL.Models.NewssVM>
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     Layout = null;
-}
-
+            }
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -54,13 +57,26 @@
                                     <li class="nav-item">
                                         <a href="#" class="nav-link"><i class="mdi mdi-magnify"></i></a>
                                     </li>
-                                    
-                                    <li class="nav-item">
-                                        <a asp-action="Login" asp-controller="Account" class="btn btn-danger"  role="button">Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a asp-controller="Account" asp-action="Registration" class="btn btn-dark"  role="button">Sign Up</a>
-                                    </li>
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+
+                                        <li>
+                                            <form asp-controller="Account" asp-action="LogOff" >
+                                                <input type="submit" value="Sign Out " class="btn btn-danger  "/>
+                                            </form>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item">
+                                            <a asp-action="Login" asp-controller="Account" class="btn btn-danger" role="button">Login</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a asp-controller="Account" asp-action="Registration" class="btn btn-dark" role="button">Sign Up</a>
+                                        </li>
+
+                                    }
+
                                 </ul>
                             </div>
                         </div>
@@ -89,26 +105,21 @@
                                                 </button>
                                             </li>
                                             <li class="nav-item active">
-                                                <a class="nav-link" href="index.html">Home</a>
+                                                <a asp-controller="Home" asp-action="Index" class="nav-link" >Home</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="pages/magazine.html">MAGAZINE</a>
+                                                <a class="nav-link"asp-controller="Categories" asp-action="Index">Categories</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="pages/business.html">Business</a>
+                                                <a class="nav-link" asp-controller="Newss"asp-action="Index">News</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="pages/sports.html">Sports</a>
+                                                <a class="nav-link" asp-controller="Admin"asp-action="Index">Admins</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="pages/art.html">Art</a>
+                                                <a class="nav-link" asp-controller="Editor"asp-action="Index">Editors</a>
                                             </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="pages/politics.html">POLITICS</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="pages/travel.html">Travel</a>
-                                            </li>
+                                            
                                             <li class="nav-item">
                                                 <a class="nav-link" href="pages/contactus.html">Contact</a>
                                             </li>

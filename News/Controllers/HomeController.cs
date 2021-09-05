@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using News.BL.Interfaces;
 using News.BL.Models;
@@ -13,7 +14,7 @@ namespace News.Controllers
 
 
 
-          private readonly IMapper mapper;
+    private readonly IMapper mapper;
     private readonly INewssRep news;
     private readonly ICategoriesRep categories;
 

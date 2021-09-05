@@ -1,8 +1,8 @@
 ﻿
 @model IEnumerable<News.BL.Models.NewssVM>
 @using Microsoft.AspNetCore.Identity;
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<News.DAL.Entity.ApplicationUser> SignInManager;
+@inject UserManager<News.DAL.Entity.ApplicationUser> UserManager;
 @{
     Layout = null;
             }
@@ -19,7 +19,7 @@
           href="~/assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="~/assets/vendors/aos/dist/aos.css/aos.css" />
 
-    <!-- End plugin css for this page -->
+    <!-- End plugin css for this page -->   
     <link rel="shortcut icon" href="~/assets/images/favicon.png" />
 
     <!-- inject:css -->

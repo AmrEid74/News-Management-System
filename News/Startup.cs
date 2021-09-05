@@ -13,6 +13,11 @@ using System.Threading.Tasks;
 using News.BL.Mapper;
 using News.BL.Interfaces;
 using News.BL.Repositories;
+using News.BL.Models;
+using News.DAL.Entity;
+using System.Net;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace News
 {
@@ -39,18 +44,26 @@ namespace News
             services.AddDbContextPool<DemoContext>(opts =>
               opts.UseSqlServer(Configuration.GetConnectionString("NewssConnection")));
             services.AddControllersWithViews();
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser,IdentityRole>(options =>
             {
                 // Default Password settings.
                 options.Password.RequireDigit = true;
-                options.Password.RequireLowercase = true; 
+                options.Password.RequireLowercase = true;
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 0;
             }).AddEntityFrameworkStores<DemoContext>()
-          .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider);
+          .AddDefaultTokenProviders();
+          
+            //services.AddMvc(option =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //    .RequireAuthenticatedUser()
+            //    .Build();
+            //    option.Filters.Add(new AuthorizeFilter(policy));
 
+            //}).AddXmlDataContractSerializerFormatters();
             
         }
 

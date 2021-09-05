@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using News.BL.Models;
+using News.DAL.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,10 @@ namespace News.Controllers
 
 
     {
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly SignInManager<IdentityUser> signInManger;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManger;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManger)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManger)
         {
             this.userManager = userManager;
             this.signInManger = signInManger;
@@ -75,7 +76,7 @@ namespace News.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var user = new IdentityUser()
+                    var user = new ApplicationUser()
                     {
                         UserName = model.Email,
                         Email = model.Email

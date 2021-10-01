@@ -35,8 +35,6 @@ namespace News.BL.Models
         [ForeignKey("CategoryId")]
         public Categories Categories { get; set; }
     
-        [ForeignKey("EditorId")]
-        public Editor Editor { get; set; }
-
+      
     }
 }

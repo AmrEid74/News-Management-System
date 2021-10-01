@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using IdentityModel;
 using News.BL.Models;
 using News.DAL.Entity;
 using System;
@@ -20,12 +21,7 @@ namespace News.BL.Mapper
             CreateMap<NewssVM, Newss>();
 
 
-            CreateMap<Admin, AdminVM>();
-            CreateMap<AdminVM, Admin>();
-
-
-            CreateMap<Editor, EditorVM>();
-            CreateMap<EditorVM, Editor>();
+           
 
         }
     }

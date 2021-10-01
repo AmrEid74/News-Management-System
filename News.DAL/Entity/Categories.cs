@@ -20,7 +20,7 @@ namespace News.DAL.Entity
         public string Description { get; set; }
 
         [ForeignKey("AdminId")]
-        public Admin Admin { get; set; }
+        public User Admin { get; set; }
 
     }
 }

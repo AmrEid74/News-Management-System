@@ -23,8 +23,7 @@ namespace News.DAL.Entity
 
         [ForeignKey("CategoryId")]
         public Categories Categories { get; set; }
-        [ForeignKey("EditorId")]
-        public Editor Editor { get; set; }
+      
 
     }
 }

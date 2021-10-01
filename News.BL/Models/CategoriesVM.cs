@@ -25,8 +25,7 @@ namespace News.BL.Models
         [MinLength(10, ErrorMessage = "Min Len 10 Letter")]
         public string Description { get; set; }
 
-        [ForeignKey("AdminId")]
-        public Admin Admin { get; set; }
+       
 
     }
 }

@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 using News.BL.Mapper;
 using News.BL.Interfaces;
 using News.BL.Repositories;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using News.DAL.Entity;
 
 namespace News
 {
@@ -28,28 +31,27 @@ namespace News
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
             services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
             services.AddScoped<ICategoriesRep, CategoriesRep>();
             services.AddScoped<INewssRep, NewssRep>();
-            services.AddScoped<IAdminRep, AdminRep>();
-            services.AddScoped<IEditorRep, EditorRep>();
-
-
+            
 
             services.AddDbContextPool<DemoContext>(opts =>
               opts.UseSqlServer(Configuration.GetConnectionString("NewssConnection")));
+            
             services.AddControllersWithViews();
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 // Default Password settings.
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true; 
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequireUppercase = true;
-                options.Password.RequiredLength = 6;
+                options.Password.RequiredLength = 5;
                 options.Password.RequiredUniqueChars = 0;
             }).AddEntityFrameworkStores<DemoContext>()
-          .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider);
+          .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
 
             
         }
@@ -68,6 +70,7 @@ namespace News
             app.UseStaticFiles();
 
             app.UseRouting();
+         
             app.UseAuthentication();
             app.UseAuthorization();
 

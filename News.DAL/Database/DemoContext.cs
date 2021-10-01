@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace News.DAL.Database
+ namespace News.DAL.Database
 {
    public class DemoContext: IdentityDbContext<ApplicationUser>
     {

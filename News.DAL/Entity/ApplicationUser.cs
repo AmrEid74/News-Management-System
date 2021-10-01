@@ -9,6 +9,10 @@ namespace News.DAL.Entity
 {
   public  class ApplicationUser : IdentityUser
     {
+
         public string FullName{ get; set; }
+
+        public string   City { get; set; }
     }
 }
+

@@ -17,9 +17,13 @@ namespace News.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManger;
+
         private readonly RoleManager<IdentityRole> roleManager;
 
         public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManger, RoleManager<IdentityRole> roleManager)
+
+
+       
         {
             this.userManager = userManager;
             this.signInManger = signInManger;

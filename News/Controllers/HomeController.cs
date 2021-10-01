@@ -14,7 +14,7 @@ namespace News.Controllers
 
 
 
-          private readonly IMapper mapper;
+    private readonly IMapper mapper;
     private readonly INewssRep news;
     private readonly ICategoriesRep categories;
 

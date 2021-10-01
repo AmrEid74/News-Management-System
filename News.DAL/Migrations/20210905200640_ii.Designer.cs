@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using News.DAL.Database;
 
 namespace News.DAL.Migrations
 {
     [DbContext(typeof(DemoContext))]
-    partial class DemoContextModelSnapshot : ModelSnapshot
+    [Migration("20210905200640_ii")]
+    partial class ii
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,72 +152,28 @@ namespace News.DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("News.DAL.Entity.ApplicationUser", b =>
+            modelBuilder.Entity("News.DAL.Entity.Admin", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AccessFailedCount")
+                    b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<double>("Salary")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("Admin");
                 });
 
             modelBuilder.Entity("News.DAL.Entity.ApplicationUser", b =>
@@ -309,6 +267,30 @@ namespace News.DAL.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("News.DAL.Entity.Editor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Salary")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Editor");
+                });
+
             modelBuilder.Entity("News.DAL.Entity.Newss", b =>
                 {
                     b.Property<int>("Id")
@@ -322,6 +304,9 @@ namespace News.DAL.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("EditorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
@@ -332,31 +317,9 @@ namespace News.DAL.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("EditorId");
+
                     b.ToTable("Newss");
-                });
-
-            modelBuilder.Entity("News.DAL.Entity.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ConfirmPassword")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Email")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Password")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -412,7 +375,7 @@ namespace News.DAL.Migrations
 
             modelBuilder.Entity("News.DAL.Entity.Categories", b =>
                 {
-                    b.HasOne("News.DAL.Entity.User", "Admin")
+                    b.HasOne("News.DAL.Entity.Admin", "Admin")
                         .WithMany()
                         .HasForeignKey("AdminId");
 
@@ -427,7 +390,13 @@ namespace News.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("News.DAL.Entity.Editor", "Editor")
+                        .WithMany()
+                        .HasForeignKey("EditorId");
+
                     b.Navigation("Categories");
+
+                    b.Navigation("Editor");
                 });
 #pragma warning restore 612, 618
         }

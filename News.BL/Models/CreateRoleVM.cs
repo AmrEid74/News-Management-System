@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace News.BL.Models
 {
-  public  class CreateRoleVM
+
+    public class CreateRoleVM
     {
 
         public int Id { get; set; }
-        [Required (ErrorMessage ="Name Is Required")]
+
+        [Required]
+        [Display(Name = "Role")]
         public string RoleName { get; set; }
     }
 }

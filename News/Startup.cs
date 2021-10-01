@@ -16,6 +16,8 @@ using News.BL.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using News.DAL.Entity;
+using News.BL.Models;
+using System.Net;
 
 namespace News
 {
@@ -37,24 +39,32 @@ namespace News
             services.AddScoped<INewssRep, NewssRep>();
             
 
-            services.AddDbContextPool<DemoContext>(opts =>
+         
+        services.AddDbContextPool<DemoContext>(opts =>
               opts.UseSqlServer(Configuration.GetConnectionString("NewssConnection")));
-            
             services.AddControllersWithViews();
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 // Default Password settings.
                 options.Password.RequireDigit = true;
-                options.Password.RequireLowercase = true; 
+                options.Password.RequireLowercase = true;
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequireUppercase = true;
-                options.Password.RequiredLength = 5;
+                options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 0;
             }).AddEntityFrameworkStores<DemoContext>()
-          .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
+          .AddDefaultTokenProviders();
 
-            
-        }
+    //services.AddMvc(option =>
+    //{
+    //    var policy = new AuthorizationPolicyBuilder()
+    //    .RequireAuthenticatedUser()
+    //    .Build();
+    //    option.Filters.Add(new AuthorizeFilter(policy));
+
+    //}).AddXmlDataContractSerializerFormatters();
+
+}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
